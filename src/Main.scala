@@ -118,5 +118,47 @@ object Main extends App{
 
   println(mapOfNumbers.values.toList.sortWith(_ < _))
 
+  val listOfInt = new ListOfInt
+
+  listOfInt.add(1)
+  listOfInt.add(2)
+  listOfInt.add(3)
+
+  println(listOfInt)
+
+  println(listOfInt.count)
+
+  println(listOfInt.contains(1))
+  println(listOfInt.contains(4))
+
+  println(listOfInt.sum)
+
+  val newList = new ListOfIntG[Int]
+
+  newList.add(20)
+  newList.add(30)
+  newList.add(40)
+
+  println(newList)
+
+  println(newList.count)
+
+  println(newList.contains(20))
+  println(newList.contains(10))
+
+  val newList1 = new ListOfIntG[String]
+
+  newList1.add("kwame")
+  newList1.add("alex")
+  newList1.add("freeman")
+
+  println(newList1)
+
+  println(newList1.count)
+
+  println(newList1.contains("alex"))
+  println(newList1.contains("john"))
+
+
 
 }
