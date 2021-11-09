@@ -19,6 +19,7 @@ class Trade1 {
 }
 
 object Trade1 {
+  //static members go here
   def apply(id: String, symbol: String, quantity: Int, price: Double): Trade1 = {
     val t = new Trade1
     t._price = price
