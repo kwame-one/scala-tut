@@ -1,5 +1,7 @@
 package com.kwame
 
+import scala.util.Random
+
 object Main extends App{
 
   val trade = new Trade("T1", "APPL", 100, 15.25)
@@ -49,5 +51,72 @@ object Main extends App{
   val transaction = new Transaction("2", 20.00, "aa", 5)
   println(transaction.value()) //100
   println(transaction.amount()) //  123.75
+
+
+  def operate(operation: String) = (x: Int, y: Int) => {
+    operation match {
+      case "add" => x+y
+      case "subtract" => x-y
+      case "power" => scala.math.pow(x,y)
+      case _ => 0
+    }
+  }
+
+  val subtract = operate("subtract")
+  println(subtract(1, 2));
+
+  println(operate("add")(1,2))
+
+  println(operate("power")(2,3))
+
+  val files = (new java.io.File(".")).listFiles
+
+  //exclude hidden files
+  val filesNotHidden = files.filter(file => !file.isHidden)
+
+  val filesNotHidden2 = files.filter(file => !file.getName.head.equals('.'))
+
+  val normalFiles = files.filter(file => !file.isDirectory)
+
+  val directories = files.filter(file => file.isDirectory)
+
+  // list of 10 largest files
+  val largestFiles = files.filter(_.isFile).sortWith(_.length() > _.length()).take(10)
+
+  val smallestFiles = files.filter(_.isFile).sortWith(_.length() < _.length()).take(10)
+
+//  val largestFilesMap = files.filter(_.isFile)
+//    .sortWith(_.length() > _.length())
+//    .take(10)
+//    .groupBy(x => x)
+//    .map(x => x.)
+
+
+//  val groupedFiles = files.sortWith(_.getName.head > _.getName.head)
+//    .groupBy(x => x)
+//    .values
+//
+//  groupedFiles.foreach(println)
+
+  def remove(coll: Seq[Int], idx: Int): Seq[Int] =  coll.filter(x => x != coll(idx))
+
+  println(remove(Seq(1,2,3,4,5), 0))
+
+  var mapOfNumbers = Map[Int, Int]()
+
+  var counter = 1
+
+  while (counter <= 6) {
+    val num = Random.between(1, 50)
+
+    if(!mapOfNumbers.contains(num)) {
+      mapOfNumbers ++= Map(num -> num)
+      counter = counter + 1
+    }
+
+  }
+
+  println(mapOfNumbers.values.toList.sortWith(_ < _))
+
 
 }
