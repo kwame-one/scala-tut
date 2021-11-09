@@ -186,7 +186,7 @@ object Main extends App{
   def validValues(seq: Seq[Int]) = {
     val s = seq.map(squareRoot)
     println(s)
-    val p = s.filter(_.isDefined)
+    val p = s.filter(x => x.isDefined)
     println(p)
     val r = p.map(_.get)
     println(r)
@@ -196,5 +196,33 @@ object Main extends App{
   val seq = Seq(4,9,16,25,-25,-16,-9, -4)
 
   validValues(seq)
+
+  def timed(expression: => Any): Unit = {
+    val start = System.nanoTime()
+    val result = expression
+    val end = System.nanoTime()
+    println(s"Elapsed time: ${end - start} ns")
+  }
+
+  timed (List.range(1,1000, 1))
+  timed (1+1)
+
+
+  def fib(n: Int): Long = {
+    if (n <= 1) n else fib(n-1) + fib(n-2)
+  }
+
+  println(fib(10))
+
+  println("***********************")
+
+  def generate(n: Int) = for (item <- 0 until n) print(s"${fib(item)} ")
+
+  generate(10)
+
+  println()
+  timed(fib(10))
+
+
 
 }
