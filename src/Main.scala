@@ -1,5 +1,7 @@
 package com.kwame
 
+import com.kwame.Main.seq
+
 import scala.util.Random
 
 object Main extends App{
@@ -160,5 +162,39 @@ object Main extends App{
   println(newList1.contains("john"))
 
 
+  def divide(a: Int, b: Int) = {
+    b match {
+      case 0 => None
+      case _ => Some(a/b)
+    }
+  }
+
+  val result = divide(0, 0)
+  println(result.getOrElse("divide by zero not allowed"))
+
+  def squareRoot(num: Int) = {
+    num match {
+      case x if x < 0 => None
+      case _ => Some(Math.sqrt(num))
+    }
+  }
+
+  println(squareRoot(-10).getOrElse("sorry, sqrt for negative numbers are not possible"))
+  println(squareRoot(16).getOrElse("sorry, sqrt for negative numbers are not possible"))
+
+
+  def validValues(seq: Seq[Int]) = {
+    val s = seq.map(squareRoot)
+    println(s)
+    val p = s.filter(_.isDefined)
+    println(p)
+    val r = p.map(_.get)
+    println(r)
+    r
+  }
+
+  val seq = Seq(4,9,16,25,-25,-16,-9, -4)
+
+  validValues(seq)
 
 }
