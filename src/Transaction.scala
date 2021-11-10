@@ -1,11 +1,11 @@
 package com.kwame
 
-class Transaction(id: String, _price: Double, symbol: String, quantity: Int)
-  extends EquityTrade(id, _price,  symbol, quantity) {
+class Transaction(id: String, _price: Double, client: Client, symbol: String, quantity: Int)
+  extends EquityTrade(id, _price, client,  symbol, quantity) with Taxable with FeePayable {
 
   def amount() = {
-    val total = value() + fee()
-    total + tax() * total
+    val subtotal = value() + fee()
+    subtotal + tax() * subtotal
   }
 
 

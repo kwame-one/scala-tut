@@ -1,5 +1,6 @@
 package com.kwame
 
+import java.io.File
 import java.text.SimpleDateFormat
 
 object Tut extends App {
@@ -51,7 +52,46 @@ object Tut extends App {
       val pattern(username, password, userid, groupId, description, homeDirectory, shell) = line.strip()
 
       println(username,password, userid, groupId, description, homeDirectory, shell)
-    }
+  }
+
+
+  val files = new File(".").listFiles
+
+  files.filter(_.isFile).sortWith(_.length() > _.length()).take(10).foreach(println)
+
+  println("***************")
+
+  files.filter(_.isFile).sortWith(_.length() < _.length()).take(10).foreach(println)
+
+  val equity = new EquityTrade("1", 10.0, null, "aa", 20)
+  val fx = new FxTrade("1", 20.00, null)
+
+  println(equity)
+  println(fx)
+
+  val transaction = new Transaction("1", 20.0, null,"aa", 5)
+  println(transaction.amount())
+
+  val client = new Client("aa", "bb")
+
+  val trade = new EquityTrade("1", 1.00, client, "aa",2)
+
+  client.addTrade(trade)
+
+  println(s"current membership ${client.getMembershipType.getType}")
+  client.addTrade(trade)
+  client.addTrade(trade)
+
+  println(s"can trade => ${client.canTrade}")
+
+  client.addTrade(trade)
+  client.addTrade(trade)
+
+  println(s"can trade => ${client.canTrade}")
+
+
+
+
 
 
 

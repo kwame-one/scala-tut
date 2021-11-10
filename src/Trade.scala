@@ -2,7 +2,6 @@ package com.kwame
 
 class Trade (val id: String, val symbol: String, var quantity: Int,  private var _price: Double) {
 
-  require(_price >= 0)
 
   def this(id: String) {
     this(id, null, 0, 0.0)

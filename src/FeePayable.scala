@@ -2,5 +2,5 @@ package com.kwame
 
 trait FeePayable {
 
-  def fee(): Double
+  def fee(): Int = 10
 }
